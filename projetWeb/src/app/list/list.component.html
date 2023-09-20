@@ -1,0 +1,41 @@
+<div style="background-color: red; height: 100vh;">
+    <h1>List Component || page /list</h1>
+    <!--routes-->
+    <h1>Exemple utilisation de route</h1>
+    <button routerLink="/home">Aller à Home</button>
+    <!--ngFor-->
+    <h1>Exemple utilisation de ngFor</h1>
+    <ul>
+      <li *ngFor="let book of books">{{book}}</li>
+    </ul>
+    <!--ngIf-->
+    <h1>Exemple utilisation de ngIf</h1>
+    <div *ngIf="tata; else tata">toto</div>
+    <ng-template #tata>tata</ng-template>
+
+    <div *ngIf="afficherMessage; else messageElse">
+      <p>Ceci est le message SI afficherMessage est vrai.</p>
+    </div>
+    
+    <ng-template #messageElse>
+      <p>Ceci est le message SINON afficherMessage est vrai.</p>
+    </ng-template>
+    
+    <button (click)="afficherMessage = !afficherMessage">
+      Cliquez pour basculer le message
+    </button>
+    <!--pipe-->
+    <div>
+      <h1>Exemple de Pipes</h1>
+      <p>Outil de transformation de données dans les modèles (templates) HTML || utilisés pour formater, filtrer et présenter les données</p>
+      <p>Date actuelle : {{dateActuelle | date:'fullDate'}}</p>
+      <p>Texte en majuscules : {{texte | uppercase}}</p>
+      <p>Texte en minuscules : {{texte | lowercase}}</p>
+      <p>Texte tronqué : {{texteLong| slice:10:30}}...</p><!-- slice:nbdebut;nbfin-->
+      <p>Liste de nombres join: {{ nombresJoines }}</p>
+      <p>Liste de nombres triés : {{ nombresTries.join(', ') }}</p>
+      <p>Montant : {{ montant | currency:'EUR':'symbol':'1.2-2' }}</p>
+  </div>
+    
+</div>
+  
