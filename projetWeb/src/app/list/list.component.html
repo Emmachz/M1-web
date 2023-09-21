@@ -1,4 +1,4 @@
-<div style="background-color: red; height: 100vh;">
+<div id="fond">
     <h1>List Component || page /list</h1>
     <!--routes-->
     <h1>Exemple utilisation de route</h1>
@@ -36,6 +36,32 @@
       <p>Liste de nombres triés : {{ nombresTries.join(', ') }}</p>
       <p>Montant : {{ montant | currency:'EUR':'symbol':'1.2-2' }}</p>
   </div>
-    
+
+  <!--Template driven From-->
+  <h1>Exemple de Template driven From cours</h1>
+  <p>Permet de créer des formulaires de complecité faible</p>
+  <form>
+    <input type="text" [(ngModel)]="favoriteColor" name="favoriteColor">
+    <button type="button" (click)="setValue()">setValue</button>
+    <p>{{ favoriteColor }}</p>
+  </form>
+
+  <h1>Formulaire Piloté par Modèle (Template-Driven Form)</h1>
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+      <div class="form-group">
+        <label for="name">Nom:</label>
+        <input type="text" id="name" name="name" [(ngModel)]="formData.name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="formData.email" required email>
+      </div>
+      <button type="submit">Soumettre</button>
+    </form>
+    <p *ngIf="submitted">Formulaire soumis avec succès!</p>
+    <p *ngIf="submitted">{{formData.name}}</p>
+  
+  
+
 </div>
   
