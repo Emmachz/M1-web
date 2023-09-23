@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -28,7 +29,7 @@ export class ListComponent {
     this.favoriteColor='Red';
     console.log(this.favoriteColor);
   }
-
+  //template driven Form exemple 
   formData = {
     name: '',
     email: '',
@@ -42,6 +43,49 @@ export class ListComponent {
       this.submitted = true;
     }
   }
+
+  //Réactive Formulaire
+  profilForm: FormGroup; // Vous devez déclarer le type de votre formulaire
+
+  constructor(private formBuilder: FormBuilder) {
+    this.profilForm = new FormGroup({
+       //le champs doit être automatiquement rempli pour appuyer sur le bouton 
+      firstname: new FormControl('toto', Validators.required),
+
+    });
+
+    //ajoute un champs directement dans le formulaire dynamique 
+    this.profilForm.patchValue({
+      firstname: 'TATA',
+    });
+  }
+  
+  ////Réactif Formulaire 2
+  // formulaire: FormGroup;
+
+  // constructor(private formBuilder: FormBuilder) {
+  //   // Initialisez le formulaire avec les champs et les validateurs souhaités
+  //   this.formulaire = this.formBuilder.group({
+  //     nom: ['', Validators.required],
+  //     email: ['', [Validators.required, Validators.email]],
+  //     message: ['']
+  //   });
+  // }
+
+  // // Gérez la soumission du formulaire
+  // onSubmit2() {
+  //   if (this.formulaire.valid) {
+  //     // Vous pouvez accéder aux valeurs du formulaire avec this.formulaire.value
+  //     console.log('Données du formulaire soumises :', this.formulaire.value);
+  //     // Ici, vous pouvez effectuer une action telle qu'envoyer les données à un serveur
+  //   }
+  // }
+  
+
+
+
+
+
 
 
 
